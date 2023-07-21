@@ -7,7 +7,6 @@
 void insertion_sort_list(listint_t **list)
 {
 	listint_t *ptr = *list, *temp1, *temp2;
-	int k;
 
 	if (!list || !ptr || !(ptr->next))
 		return;
@@ -40,7 +39,6 @@ void insertion_sort_list(listint_t **list)
 			temp1 = temp1->prev;
 			temp2 = temp2->prev;
 		}
-		ptr = ptr->next;
 	}
 }
 
