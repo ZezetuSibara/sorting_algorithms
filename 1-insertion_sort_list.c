@@ -9,7 +9,7 @@ void insertion_sort_list(listint_t **list)
 	listint_t *ptr = *list, *temp1, *temp2;
 	int k;
 
-	if (!ptr || ptr->next == NULL)
+	if (!list || !ptr || ptr->next == NULL)
 		return;
 
 	ptr = ptr->next;
