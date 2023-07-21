@@ -9,7 +9,7 @@ void insertion_sort_list(listint_t **list)
 	listint_t *ptr = *list, *temp1, *temp2;
 	int k;
 
-	if (!ptr || !(ptr->next))
+	if (!list || !ptr || !(ptr->next))
 		return;
 
 	ptr = ptr->next;
@@ -17,12 +17,11 @@ void insertion_sort_list(listint_t **list)
 	{
 		temp1 = ptr;
 		temp2 = ptr->prev;
-		k = 0;
+		ptr = ptr->next;
 		while (temp2 && temp1)
 		{
 			if (temp2->n > temp2->next->n)
 			{
-				k++;
 				temp2->next = temp1->next;
 				temp1->next = temp2;
 				temp1->prev = temp2->prev;
@@ -36,8 +35,6 @@ void insertion_sort_list(listint_t **list)
 				temp2 = temp2->prev;
 				temp1 = temp1->next;
 
-				if (k == 1)
-					ptr = temp1;
 				print_list(*list);
 			}
 			temp1 = temp1->prev;
