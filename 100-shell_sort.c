@@ -1,106 +1,43 @@
 #include "sort.h"
 
 /**
- * find_pow - will be used to find power of a  particular number
- * @x: the actual number
- * @y: the actual power value
- * * Return: the power of x will be returned
- */
-int find_pow(int x, size_t y)
-{
-	if (y == 0)
-		return (1);
-
-	return (x * find_pow(x, y - 1));
-}
-
-/**
- * seq_generator - will be used to generate a sequence
- * @size: the actual sequence size
- * Return: points to the sequence address
- */
-int *seq_generator(size_t size)
-{
-	size_t n = 0;
-	int i = 0, nth_term, *sequence;
-
-	sequence = malloc(sizeof(int) * size);
-	if (sequence == NULL)
-		return (NULL);
-
-	nth_term = 0;
-	while (n < size)
-	{
-		nth_term = nth_term + find_pow(3, n);
-		sequence[i] = nth_term;
-		n++;
-		i++;
-	}
-	return (sequence);
-}
-
-/**
- * reverse_seq - the reverse sequence to be used
- * @sequence: points to the sequesnce address
- * @size: the actual sequence size
- * Return: a reversed sequence
- */
-int *reverse_seq(int *sequence, size_t size)
-{
-	int *rev_seq;
-	size_t i = 0, seq_index;
-
-	rev_seq = malloc(sizeof(int) * size);
-	if (rev_seq == NULL)
-		return (NULL);
-
-	seq_index = size - 1;
-	while (i < size)
-	{
-		rev_seq[i] = sequence[seq_index];
-		i++;
-		seq_index--;
-	}
-	return (rev_seq);
-}
-
-/**
- * shell_sort - the Shell sort algorithm will be used to sort
- * @array: the array to sort
- * @size: the actual array size
- * Return: void
+ * shell_sort - Shell sort algorithm
+ * @array: unsorted data
+ * @size: large of array
+ * Return: Nothing
  */
 void shell_sort(int *array, size_t size)
 {
-	int j, flag = 0;
-	int temp, *sequence, *rev_seq, hold;
-	size_t i, seq_index = 0;
+	int tmp;
+	size_t j, gap, n;
 
-	sequence = seq_generator(size);
-	if (sequence == NULL)
+	gap = 1;
+	if (!array || size < 2)
 		return;
-
-	rev_seq = reverse_seq(sequence, size);
-	if (rev_seq == NULL)
-		return;
-
-	while (seq_index < size)
+	/* Create Knuth sequence */
+	while (gap < size / 3)
+		gap = gap * 3 + 1;
+	/* Start with the largest gap and work down to a gap of 1 */
+	while (gap > 0)
 	{
-		for (i = rev_seq[seq_index]; i < size; i++)
+		/* Do a gapped insertion sort for this gap size. */
+		/* The first gap elements array[0..gap-1] are already in gapped order */
+		/* keep adding one more element until the entire array is gap sorted */
+		for (j = gap; j < size; j += 1)
 		{
-			temp = array[i];
-			hold = rev_seq[seq_index];
-			for (j = i; j >= hold && array[j - hold] > temp; j -= hold)
-			{
-				array[j] = array[j - rev_seq[seq_index]];
-			}
-			array[j] = temp;
-			flag = 1;
+			/* add array[j] to the elements that have been gap sorted */
+			/* save array[j] in temp and make a hole at position j */
+			tmp = array[j];
+			/* shift earlier gap-sorted elements up until the correct */
+			/* location for array[j] is found */
+			for (n = j; n >= gap && tmp < array[n - gap]; n -= gap)
+				array[n] = array[n - gap];
+			/* put tmp (the original array[j]) in its correct location */
+			array[n] = tmp;
 		}
-		if (flag)
-			print_array(array, size);
-		seq_index++;
+		/* decreasing the interval */
+		gap /= 3;
+		/*  print the array each time you decrease the interval */
+		print_array(array, size);
 	}
-	free(sequence);
-	free(rev_seq);
 }
