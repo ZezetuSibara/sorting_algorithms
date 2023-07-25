@@ -1,5 +1,7 @@
 #include "sort.h"
 #include <stdio.h>
+#include <stdlib.h>
+
 /**
  * _bigest -  Give me the largest number in a array of integers
  * @array: The Int array
