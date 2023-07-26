@@ -1,8 +1,8 @@
 #include "sort.h"
+
 /**
- * print_list - Prints a list of integers
- *
- * @list: The list to be printed
+ * print_list - A list of integers will be printed
+ * @list: The actual list to print
  */
 void print_list(const listint_t *list)
 {

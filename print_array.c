@@ -1,11 +1,10 @@
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 /**
- * print_array - Prints an array of integers
- *
- * @array: The array to be printed
- * @size: Number of elements in @array
+ * print_array - An array of integers will be printed
+ * @array: The actual array to print
+ * @size: Total elements in @array
  */
 void print_array(const int *array, size_t size)
 {

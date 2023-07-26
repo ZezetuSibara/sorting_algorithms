@@ -19,7 +19,7 @@ typedef struct listint_s
 void print_array(const int *array, size_t size);
 void print_list(const listint_t *list);
 
-/** The prototypes used for Sort Algorithms */
+/** The important prototypes used for Sort Algorithms */
 void swap(int *x, int *y);
 void sift_down(int *array, size_t max_idx, size_t c_idx, size_t size);
 void heap_sort(int *array, size_t size);

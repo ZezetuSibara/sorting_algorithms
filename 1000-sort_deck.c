@@ -1,8 +1,8 @@
 #include "deck.h"
 /**
- * aux_num_fun - turn into integer card value
- * @head_tmp1: pointer to the list
- * Return: integer rep
+ * aux_num_fun - it changes into integer value of the card
+ * @head_tmp1: points to the actual list
+ * Return: returns the substitute of the integer 
  **/
 int aux_num_fun(deck_node_t *head_tmp1)
 {
@@ -20,9 +20,9 @@ int aux_num_fun(deck_node_t *head_tmp1)
 	return (aux_num);
 }
 /**
- * num_sort - sorts a doubly linked list of integers, 4 stages
- * @list: pointer to the list head
- * Return: no return
+ * num_sort - used to sort inteegers in 4 stages
+ * @list: points tohead of the list
+ * Return: nothing
  **/
 void num_sort(deck_node_t **list)
 {
@@ -68,11 +68,11 @@ void num_sort(deck_node_t **list)
 	}
 }
 /**
- * kind_sort - sorts a doubly linked list of integers
- * in ascending order using the Insertion sort ailgorithm
- * @list: pointer to the list head
- * Return: no return
- **/
+ * kind_sort - used to sort integers from a doubly linked list
+ * @list: points to head of the list
+ * Return: nothing
+**/
+
 void kind_sort(deck_node_t **list)
 {
 	deck_node_t *head_tmp1, *head_tmp2, *aux1, *aux2;
@@ -116,9 +116,9 @@ void kind_sort(deck_node_t **list)
 	}
 }
 /**
- * sort_deck - sorts a deck of cards
- * @deck: ponter to the deck
- * Return: no return
+ * sort_deck - used to sort a deck of cards
+ * @deck: ponts to deck
+ * Return: nothing
  *
  **/
 void sort_deck(deck_node_t **deck)

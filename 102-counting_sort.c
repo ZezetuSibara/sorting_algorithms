@@ -3,10 +3,10 @@
 #include <stdlib.h>
 
 /**
- * _bigest -  Give me the largest number in a array of integers
- * @array: The Int array
- * @size: Size of array
- * Return: The largest number
+ * _bigest -  Populates the largest number
+ * @array: The array integer
+ * @size: the actual array size
+ * Return: The largest number is returned
  */
 int _bigest(int *array, size_t size)
 {
@@ -22,9 +22,9 @@ int _bigest(int *array, size_t size)
 	return (k);
 }
 /**
- * _memset -  Create a integer array and set each space in 0
- * @size: Size of array
- * Return: The integer array
+ * _memset -  An integer array is created
+ * @size: the actual array size
+ * Return: Returns the array of the integer
  */
 int *_memset(int size)
 {
@@ -39,10 +39,10 @@ int *_memset(int size)
 	return (ptr);
 }
 /**
- * counting_sort - sort an array with the counting sort algorithm
- * @array: The Int array
- * @size: Size of array
- * Return: The sorted list
+ * counting_sort - used to sort the array
+ * @array: The array integer
+ * @size: the actual array size
+ * Return: a list that is sorted
  */
 void counting_sort(int *array, size_t size)
 {
@@ -52,22 +52,22 @@ void counting_sort(int *array, size_t size)
 
 	if (size < 2)
 		return;
-	/*Know the largest number in the array*/
+	/* the largest number */
 	k = _bigest(array, size);
-	/*Make the help array*/
+	/* the help array is populated */
 	ptr = _memset(k + 1);
 	if (!ptr)
 		return;
-	/*Set the values for sorting*/
+	/* values are set for sorting */
 	for (i = 0; i < size; i++)
 		for (j = 0; (int)j < k + 1; j++)
 			if ((int)j == array[i])
 				ptr[j] += 1;
-	/*Modificate the count in the array*/
+	/* the count in the array is modified */
 	for (i = 0; (int)i < k; i++)
 		ptr[i + 1] = ptr[i] + ptr[i + 1];
 	print_array(ptr, k + 1);
-	/*Create the sort array*/
+	/* the sort array is created */
 	sort_ar = malloc(size * sizeof(int));
 	if (!sort_ar)
 	{

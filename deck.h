@@ -1,14 +1,14 @@
 #ifndef _DECK_H_
 #define _DECK_H_
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
+
 /**
- * enum kind_e - kinds in the deck
- *
- * @SPADE: 0
- * @HEART: 1
- * @CLUB: 2
- * @DIAMOND: 3
+ * enum kind_e - types of cards in the deck
+ * @SPADE:  represented by 0
+ * @HEART: represented by 1
+ * @CLUB: represented by 2
+ * @DIAMOND: represented by 3
  */
 typedef enum kind_e
 {
@@ -19,11 +19,9 @@ typedef enum kind_e
 } kind_t;
 
 /**
- * struct card_s - Playing card
- *
- * @value: Value of the card
- * From "Ace" to "King"
- * @kind: Kind of the card
+ * struct card_s - the Playing card
+ * @value: the actual Value of the card
+ * @kind: type of the card
  */
 typedef struct card_s
 {
@@ -32,11 +30,10 @@ typedef struct card_s
 } card_t;
 
 /**
- * struct deck_node_s - Deck of card
- *
- * @card: Pointer to the card of the node
- * @prev: Pointer to the previous node of the list
- * @next: Pointer to the next node of the list
+ * struct deck_node_s - the Deck of cards
+ * @card: Points to the card node
+ * @prev: Point to the previous list node
+ * @next: Points to the next list node
  */
 typedef struct deck_node_s
 {
